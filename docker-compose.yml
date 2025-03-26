@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  plugin:
+    build: .
+    container_name: spring_test
+    image: kirillgluhov/planner:1.4
+    ports:
+      - "8080:8080"
+    volumes:
+      - plugins-storage:/opt/plugins
+    restart: always
+
+volumes:
+  plugins-storage:
+    external: true
