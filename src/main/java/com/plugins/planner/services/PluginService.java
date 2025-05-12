@@ -1,5 +1,6 @@
 package com.plugins.planner.services;
 
+import com.plugins.planner.models.Manifest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package com.plugins.planner.controllers;
 
+import com.plugins.planner.models.Manifest;
 import com.plugins.planner.services.PluginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -33,9 +34,10 @@ public class PluginController {
     {
         Resource file = pluginService.getFile(pluginName, fileName);
 
+
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-                .header(HttpHeaders.CONTENT_TYPE, file.getFilename().contains("png") ? "image/png" : "application/javascript")
+                .header(HttpHeaders.CONTENT_TYPE, file.getFilename().contains("png") ? "image/png" : "text/html")
                 .body(file);
     }
 

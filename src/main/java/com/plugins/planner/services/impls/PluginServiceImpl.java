@@ -1,5 +1,8 @@
 package com.plugins.planner.services.impls;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.plugins.planner.models.Manifest;
 import com.plugins.planner.services.PluginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
@@ -12,9 +15,11 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @Service
@@ -39,6 +44,8 @@ public class PluginServiceImpl implements PluginService {
     @Override
     public Resource getFile(String pluginName, String fileName) {
         Path filePath = pluginStoragePath.resolve(pluginName + "/" + fileName);
+
+        System.out.println(pluginName + "_" + fileName);
 
         if (!Files.exists(filePath))
         {
